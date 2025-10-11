@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="author" content="Meiying, Thao, Ryan">
+    <title>Project Proposal: HomeVest</title>
     <link rel="stylesheet" href="css/proposal.css">
 </head>
 <body>
@@ -11,29 +12,51 @@
         <h1>HomeVest</h1>
         <p>Real Estate ROI Simplified</p>
     </header>
+    <main>
+        <section>
+            <h2>Problem</h2>
+            <p>Buying a home is one of the biggest financial decisions people make, yet most online tools only show the price tag—not the full picture. Platforms like <a href="https://www.zillow.com/" target="_blank">Zillow</a> and <a href="https://www.redfin.com/" target="_blank">Redfin</a> are great for browsing homes, but they don’t help users understand how much they can actually afford, or whether a home could be a good investment. For example, a listing might show an estimated $3,000 monthly mortgage, but doesn’t account for property taxes, potential rental income, or appreciation. For many young buyers and aspiring investors, that makes it hard to make informed choices</p>
+            <p>Our project, Homevest, focuses on solving that problem. It allows users to plug in a few numbers—like price, rent, loan-term, credit score, or down payment—and instantly see how much profit or loss they might make over time. Unlike Zillow’s simple mortgage calculator, our app provides a dynamic, interactive interface where users can adjust financial assumptions and visualize long-term results. We want to make real estate finance more transparent and accessible, even for users who aren’t experts.</p>
+        </section>
+        
+        <section>
+            <h2>App Description</h2>
+            <p><strong>Users: </strong>Our proposed web app is designed for students, young professionals, and anyone curious about housing and long-term costs. The main goal is to help users explore homes, simulate buying and selling, and understand financial trade-offs in a clear, interactive way. Unlike commercial real-estate sites, this app focuses on education and transparency, giving users a safe space to experiment with mock listings and financial comparisons without needing real accounts or private data.</p>
+            
+            <h3>Core Interactive Features(2.5)</h3>
+            <ol>
+                <li><strong>Buy/Sell Listing Builder & Browser:</strong> users create mock listings (price, address/neighborhood, photos, description, amenities) and browse/filter by price range, neighborhood, and features. Listings are user-generated to avoid restricted APIs.</li>
+                <li><strong>Financial Insight Simulator:</strong> compare renting vs. buying by adjusting down payment, rate, term, taxes, insurance, maintenance, rent, and appreciation. Outputs monthly cash flow, break-even horizon, and long-term ROI with dynamic charts.</li>
+                <li><strong>(Half) Map & Smart Nearby Filters:</strong> an embedded interactive map shows each listing and nearby essentials (parks, groceries, transit). Users toggle filters to highlight amenities and evaluate location fit.</li>
+            </ol>
+            
+            <h3>Persistence Data</h3>
+            <p>To keep the app client-side and accessible, we will avoid APIs that require authentication or server proxies. If we include public statistics (e.g., median home values or rents), we will preprocess small CSV/JSON snapshots and commit them to the repo, or rely on user-generated data. This ensures everything loads via GitHub Pages without CORS issues.</p>
+                <p>Users of Homevest will view detailed financial information related to homeownership and real estate investment. The app displays data such as home price, rent, loan term, down payment, and credit score, along with computed values like monthly mortgage payments, property taxes, insurance, maintenance costs, rental income, cash flow, and long-term ROI. It presents this information through interactive charts and dashboards, allowing users to visualize profits, losses, and equity growth over time.</p>
+                <p> To make the data realistic, the project plans to use public datasets and APIs such as the Zillow Home Value Index (ZHVI) and US Census housing statistics for median prices and rent estimates. For example, the 
+                    <a href="https://www.zillow.com/research/data/" target="_blank" rel="noopener noreferrer">Zillow Research Data</a> 
+                    provides ZIP-code-level data on home values, rent estimates, and property trends that can be integrated into the app. This data will allow Homevest to automatically populate neighborhood-level financial insights and support accurate investment simulations.</p>
+            <h3>This app solves the chosen problem by:</h3>
+                <p>Homevest helps solve the problem of unclear and incomplete financial information in the home-buying process by turning complex real estate data into an interactive, easy-to-understand experience. Instead of relying on static estimates, users can explore how different financial factors—like interest rates, taxes, rent income, or appreciation—impact affordability and long-term outcomes. This empowers users, especially first-time buyers and young investors, to make more informed and confident decisions. Beyond the numbers, the app encourages financial literacy by showing how small changes in credit score or down payment can affect future profits or losses. By making real estate investment transparent, accessible, and educational, Homevest bridges the gap between data and understanding—helping users learn, experiment, and plan smarter for their financial future.</p>
+                <p><strong>Equity and Acessibility: </strong> consider minority users who face information barriers by surfacing low‑cost options and transit‑adjacent listings, using plain language and WCAG‑aligned contrast/focus states, keyboard navigation, and clear financial disclosures.</p>
+            
+            
+            <h3>Functionality Walkthrough</h3>
+                <ol>
+                    <li>Open Listings → apply budget filter (e.g., $1,800–$2,400/month) → add two homes to Favorites.</li>
+                    <li>Open Simulator → load a favorite home → adjust down payment and interest rate → view updated cash flow and ROI chart.</li>
+                    <li>Open Map → toggle “Parks” and “Grocery” → confirm nearby amenities for the favorite home.</li>
+                </ol>
+        </section>
 
-    <section>
-        <h2>Problem</h2>
-        <p>Buying a home is one of the biggest financial decisions people make, yet most online tools only show the price tag—not the full picture. Platforms like <a href="https://www.zillow.com/" target="_blank">Zillow</a> and <a href="https://www.redfin.com/" target="_blank">Redfin</a> are great for browsing homes, but they don’t help users understand how much they can actually afford, or whether a home could be a good investment. For example, a listing might show an estimated $3,000 monthly mortgage, but doesn’t account for property taxes, potential rental income, or appreciation. For many young buyers and aspiring investors, that makes it hard to make informed choices</p>
-        <p>Our project, Homevest, focuses on solving that problem. It allows users to plug in a few numbers—like price, rent, loan-term, credit score, or down payment—and instantly see how much profit or loss they might make over time. Unlike Zillow’s simple mortgage calculator, our app provides a dynamic, interactive interface where users can adjust financial assumptions and visualize long-term results. We want to make real estate finance more transparent and accessible, even for users who aren’t experts.</p>
-    </section>
+        <section>
+            <h2>References</h2>
+            <ul>
+                <li><a href="https://www.zillow.com/"target="_blank" rel="noopener noreferrer">Zillow - Real Estate Marketplace</a></li>
+                <li><a href="https://www.redfin.com/"target="_blank" rel="noopener noreferrer">Refdin - Buy Sell Homes</a></li>
+            </ul>
+        </section>
+    </main>
     
-    <section>
-        <h2>App Description</h2>
-        <p>Our proposed web app is designed for students, young professionals, and anyone curious about housing and long-term costs. The main goal is to help users explore homes, simulate buying and selling, and understand financial trade-offs in a clear, interactive way. Unlike commercial real-estate sites, this app focuses on education and transparency, giving users a safe space to experiment with mock listings and financial comparisons without needing real accounts or private data.</p>
-        <h3>App Functions</h3>
-        <ul>
-            <li>Homevest lets users enter details like price, rent, loan term, and down payment to calculate true affordability and projected returns. It factors in taxes, insurance, maintenance, and rental income for a full financial view, with an interactive dashboard to adjust assumptions and compare homes or investment scenarios through dynamic charts.</li>
-            <li>Our platform aims to streamline this experience by allowing users to view all relevant neighborhood information directly within the app. Since proximity to essential amenities and vibrant communities plays a major role in many people’s housing choices, we want to make that information instantly accessible, helping users find not just a house but a home that truly fits their lifestyle and investment goals.</li>
-            <li>Users can also save their favorite listings, house ranking dashboards based on neighborhood, and apply filters to find the house that suits their best needs.</li>
-        </ul>
-        <h3>Kind of information users will view</h3>
-            <p>Users of Homevest will view detailed financial information related to homeownership and real estate investment. The app displays data such as home price, rent, loan term, down payment, and credit score, along with computed values like monthly mortgage payments, property taxes, insurance, maintenance costs, rental income, cash flow, and long-term ROI. It presents this information through interactive charts and dashboards, allowing users to visualize profits, losses, and equity growth over time.</p>
-            <p> To make the data realistic, the project plans to use public datasets and APIs such as the Zillow Home Value Index (ZHVI) and US Census housing statistics for median prices and rent estimates. For example, the 
-                <a href="https://www.zillow.com/research/data/" target="_blank" rel="noopener noreferrer">Zillow Research Data</a> 
-                provides ZIP-code-level data on home values, rent estimates, and property trends that can be integrated into the app. This data will allow Homevest to automatically populate neighborhood-level financial insights and support accurate investment simulations.</p>
-        <h3>This app solves the chosen problem by:</h3>
-            <p>Homevest helps solve the problem of unclear and incomplete financial information in the home-buying process by turning complex real estate data into an interactive, easy-to-understand experience. Instead of relying on static estimates, users can explore how different financial factors—like interest rates, taxes, rent income, or appreciation—impact affordability and long-term outcomes. This empowers users, especially first-time buyers and young investors, to make more informed and confident decisions. Beyond the numbers, the app encourages financial literacy by showing how small changes in credit score or down payment can affect future profits or losses. By making real estate investment transparent, accessible, and educational, Homevest bridges the gap between data and understanding—helping users learn, experiment, and plan smarter for their financial future.</p>
-    </section>
 </body>
 </html>

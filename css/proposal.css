@@ -7,10 +7,14 @@
 
 body {
   background-color: #f7f8fa;
+  color:#222;
   line-height: 1.6;
   padding: 2rem;
   max-width: 900px;
   margin: auto;
+}
+a{
+  color:#0078d7;
 }
 
 header {
@@ -53,10 +57,20 @@ p {
   color: #444;
 }
 
-ul {
+ol{
   list-style: none;
 }
+ol li{
+  background-color: #f0f6ff;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-left: 4px solid #0078d7;
+  border-radius: 6px;
+}
 
+ul {
+  margin-left: 1.5rem;
+}
 ul li {
   background-color: #f0f6ff;
   padding: 1rem;
