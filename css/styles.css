@@ -74,7 +74,7 @@ nav {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
     padding: 2rem;
     margin: 2rem 5rem;
@@ -84,6 +84,8 @@ nav {
     overflow: hidden;
     border-radius: 8px;
     border: 1px solid lightgray;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
 }
 
 .property-card:hover {
