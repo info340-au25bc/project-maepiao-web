@@ -90,9 +90,10 @@ nav {
 }
 
 h1 {
+    font-size: 2.5rem;
     color: #000929;
     font-weight: 600;
-    margin: 0;
+    margin-top: 4rem;
 }
 
 
