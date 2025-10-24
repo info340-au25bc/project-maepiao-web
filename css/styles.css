@@ -77,6 +77,27 @@ nav {
 /* End of navbar styling */
 
 
+/* Styling for header of index */
+.properties-section {
+    padding: 2rem;
+    margin: 0 5rem;
+}
+
+.properties-section > p {
+    margin-bottom: 3rem;
+    color: #000929;
+    font-weight: 300;
+}
+
+h1 {
+    color: #000929;
+    font-weight: 600;
+    margin: 0;
+}
+
+
+/* End of header styling of index */
+
 
 /* Main content styling for the grid of photos */
 
@@ -84,8 +105,6 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2rem;
-    padding: 2rem;
-    margin: 2rem 5rem;
 }
 
 .property-card {
@@ -124,14 +143,14 @@ nav {
     font-size: 1rem;
 }
 
-.image-wrapper {
+.price-row {
     position: relative;
 }
 
 .favorite {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: -.4rem;
+    right: .8rem;
     border-radius: 50%;
     padding: 6px;
     font-size: 1.3rem;
@@ -168,8 +187,6 @@ nav {
     .grid-container {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
-        padding: 2rem;
-        margin: 2rem 8rem;
     }
 
     .property-card img {
