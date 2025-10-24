@@ -98,7 +98,8 @@ nav {
 
 .property-card img {
     width: 100%;
-    height: auto;
+    height: 15rem;
+    object-fit: cover;
 }
 
 .house-price {
@@ -134,6 +135,10 @@ nav {
     color: #000929;
 }
 
+.favorite:hover {
+    color: red;
+}
+
 .bed {
     font-size: 1.3rem;
     vertical-align: middle;
@@ -149,17 +154,39 @@ nav {
     color: #000929;
 }
 
+@media (min-width: 1601px) {
+    .property-card img {
+        height: 28rem;
+    }
+}
+
 @media (min-width: 1200px) {
     .grid-container {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
         padding: 2rem;
-        margin: 2rem 5rem;
+        margin: 2rem 8rem;
     }
 
     .property-card img {
         width: 100%;
-        height: auto;
+        height: 18rem;
+        object-fit: cover;
+    }
+
+    .bed {
+        font-size: 1.3rem;
+        vertical-align: middle;
+        margin-right: 0.5rem;;
+        color: #000929;
+    }
+
+    .bathtub, .square-foot {
+        font-size: 1.3rem;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+        margin-right: .5rem;
+        color: #000929;
     }
 }
 /* End of main content styling for the grid of photos */
