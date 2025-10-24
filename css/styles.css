@@ -232,3 +232,83 @@ nav {
   background-color: #555;
 }
 
+/* Sell Your Home styling*/
+.h1-sell {
+    margin-left: 200px;
+}
+
+.lead-sell {
+    margin-left: 200px;
+}
+
+.long {
+    width: 420px; 
+    max-width: 100%; 
+    padding: 25px 20px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.enter-search {
+    margin-top: 40px;
+    border-top: 20px;
+    border-bottom: 20px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-left: 200px;
+} 
+
+.enter-search:focus-within {
+    border-color: blue; 
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); 
+}
+
+.price-sell {
+    display: flex;
+    flex-direction: column;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 10px 12px;
+    width: 140px;
+}
+
+.input:focus-within {
+  border-color: #1a73e8;
+}
+
+.long-price {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    font-size: 15px;
+    color: #000;
+}
+
+.house-info {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: vertical;
+    margin-left: 200px;
+    gap: 30px;
+}
+
+.bed-sell {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
