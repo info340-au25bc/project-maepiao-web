@@ -457,9 +457,90 @@ h1 {
 .saved-title:hover { text-decoration: underline; }
 .saved-sub {
   margin: .1rem 0 0;
-  color: #6b7280;
+  color: #aebbd5;
   font-size: .9rem;
 }
 /* -------------- END of Account Page -------------*/
 
 
+/* -------------- Login/Sign up page-------------- */
+.login-header {
+  background-color: #cfe5fd;
+  text-align: center;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+.login-main {
+  background-color: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-box {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  border:1px solid #ccc;
+  border-radius:5px;
+}
+
+button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.6rem;
+  background-color:#003366;
+  color: white;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+button:hover {
+  background-color: #003366;;
+  color:white;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top:1rem;
+}
+
+.switch-text a {
+  color: #003366;
+  text-decoration: none;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
+}
+/* -------------- END of Login/Sign up page-------------- */
