@@ -5,7 +5,6 @@ body {
 
 
 /* Navbar styling */
-
 nav {
     display: flex;
     justify-content: space-between;
@@ -95,13 +94,10 @@ h1 {
     font-weight: 600;
     margin-top: 2rem;
 }
-
-
 /* End of header styling of index */
 
 
 /* Main content styling for the grid of photos */
-
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -214,43 +210,7 @@ h1 {
 /* End of main content styling for the grid of photos */
 
 
-/* Profile styling */
-.account-container{
-    max-width: 1100px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    display: grid;
-    gap: 2rem;
-}
-
-.profile-card, .settings-card{
-  align-items: center;
-  padding: 1.25rem;
-  border: 1px solid lightgray;
-  border-radius: 8px;
-  background: #fff;
-}
-
-.profile-email { 
-    margin: .2rem 0 0; 
-    color: #6b7280; 
-}
-
-.profile-meta button {
-  margin-top: 0.5rem;
-  padding: 0.4rem 0.8rem;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.profile-meta button:hover {
-  background-color: #555;
-}
-
-/* Sell Your Home styling*/
+/* -------------- Sell Your Home styling -------------- */
 .h1-sell {
     margin-left: 200px;
 }
@@ -328,5 +288,178 @@ h1 {
     flex-direction: column;
 }
 
+/* -------------- Account Page -------------*/
+/* Profile styling */
+.account-container{
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.profile-card, .settings-card{
+  align-items: center;
+  padding: 1.25rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.profile-email { 
+    margin: .2rem 0 0; 
+    color: #6b7280; 
+}
+
+.profile-meta button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.profile-meta button:hover {
+  background-color: #555;
+}
+
+.redirect-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #000;
+  color: #fff;
+  padding: .5rem 1rem;
+  z-index: 1000;
+}
+.skip-link:focus {
+  left: 1rem;
+}
+
+/* Layout */
+.account-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .account-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .profile-card {
+    grid-column: 1 / -1;
+  }
+}
+
+/* section cards */
+.card {
+  padding: 1.25rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.card.danger {
+  border-color: #fca5a5;
+  background: #fff7f7;
+}
+
+/* Profile meta */
+.profile-meta .profile-name {
+  margin: .25rem 0 0;
+  font-weight: 600;
+  color: #000929;
+}
+.profile-meta .profile-email {
+  margin: .2rem 0 1rem;
+  color: #6b7280;
+}
+.button-row {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: .5rem .9rem;
+  border-radius: 6px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.button:hover { 
+    background: #333; 
+}
+
+.button-secondary {
+  background: #fff;
+  color: #111;
+  border-color: #bcbcbc;
+}
+.button-secondary:hover { 
+    background: #f3f4f6; 
+}
+.button-tertiary {
+  background: #fff;
+  color: #111;
+  border-color: #bcbcbc;
+  padding: .4rem .7rem;
+}
+.button-tertiary:hover { background: #f9fafb; }
+
+.form-actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.form-help {
+  min-height: 1em;
+  color: #065f46;
+}
+
+/* Saved homes list */
+.saved-list {
+  display: grid;
+  gap: .75rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.saved-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: .75rem;
+  align-items: center;
+}
+.saved-thumb img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+.saved-title {
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+}
+.saved-title:hover { text-decoration: underline; }
+.saved-sub {
+  margin: .1rem 0 0;
+  color: #6b7280;
+  font-size: .9rem;
+}
+/* -------------- END of Account Page -------------*/
 
 
