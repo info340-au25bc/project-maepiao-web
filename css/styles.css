@@ -666,10 +666,10 @@ label {
 
 input {
   width: 100%;
-  padding: 0.5rem;
+  padding: auto;
   margin-top: 0.25rem;
   border:1px solid #ccc;
-  border-radius:5px;
+  border-radius:6px;
 }
 
 .btn {
