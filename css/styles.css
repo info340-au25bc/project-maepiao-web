@@ -430,6 +430,7 @@ h1 {
   background-color: #000;
   color: #fff;
   border: none;
+  text-decoration: none;
   padding: 10px 16px;
   max-width: 50%;
   font-size: 14px;

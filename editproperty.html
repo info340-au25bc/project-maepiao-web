@@ -6,10 +6,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <title>HomeVest - Sell Your House</title>
-        <meta name="author" content="Ryan Hoang, Meiying Piao, Thao Nguyen">
-        <meta name="description" content="HomeVest - Buy, sell, and manage properties easily">
-        <link rel="icon" type="image/png" href="img/favicon.png">
+        <title>HomeVest - Edit Property</title>
+        <meta name="author" content="Thao Nguyen">
+        <meta name="description" content="This is a page to see your selling list">
+         <link rel="icon" type="image/png" href="img/favicon.png">
     </head>
     <body>
         <nav>
@@ -18,6 +18,7 @@
                 <a href="index.html">Buy</a>
                 <a href="sellpage.html">Sell</a>
                 <a href="manageproperty.html">Manage Property</a>
+                <a href="#">Financial</a>
             </div>
             <div class="auth-links">
                 <a href="accountpage.html">
@@ -31,46 +32,40 @@
 
         <header>
             <div class="container-sell">
-                <h1 class="h1-sell">Sell Your Home</h1>
-                <p class="lead-sell">Simple and safe selling for your home.</p>
+                <h1 class="h1-sell">Edit Your Property</h1>
+                <p class="lead-sell">Edit your listing here.</p>
             </div>
         </header>
-        
-        <section class="body-manage">
 
-            <div class="enter-search">
-                <div class="flex-item1"><input class="long" type="text" placeholder="Enter an address, neighborhood, city, or ZIP code"></div>
-                <div class="flex-item22"><i class="fas fa-search"></i></div>
-            </div>
-            
+        <section class="body-manage">
             <div class="house-info">
                 <div class="price-sell">
                     <div class="flex-item2"><h2>Price</h2></div>
                     <div class="input">
                         <div class="flex-item2"><i class="fa fa-dollar"></i></div>
-                        <div class="flex-item"><input class="long-price" type="number"></div>
+                        <div class="flex-item"><input value="1000" class="long-price" type="number"></div>
                     </div>
                 </div>
                 <div class="bed-sell">
                     <div class="flex-item2"><h2>Beds</h2></div>
                     <div class="input">
-                        <div class="flex-item"><input class="long-price" type="number"></div>
+                        <div class="flex-item"><input value="1" class="long-price" type="number"></div>
                     </div>
                 </div>
                 <div class="bath-sell">
                     <div class="flex-item2"><h2>Bathrooms</h2></div>
                     <div class="input">
-                        <div class="flex-item"><input class="long-price" type="number"></div>
+                        <div class="flex-item"><input value="1" class="long-price" type="number"></div>
                     </div>
                 </div>
                 <div class="estimated-sell">
                     <div class="flex-item2"><h2>Estimated Price</h2></div>
                     <div class="input">
-                        <div class="flex-item"><input disabled value="3000" class="long-price" type="number" placeholder="$0"></div>
+                        <div class="flex-item"><input value="2000" disabled class="long-price" type="number" placeholder="$0"></div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="add-info">
                 <div class="add-section">
                     <button class="add-photo-button">Add New Photo</button>
@@ -84,17 +79,17 @@
                 <div class="photo3">
                     <img src="img/house3.webp" alt="house-1">
                 </div>
-                <div class="photo4">
-                    <img src="img/house4.jpg" alt="house-1">
-                </div>
-                <div class="photo4">
-                    <img src="img/house5.jpg" alt="house-1">
-                </div>
+            </div>
+
+            <div>
+                <button class="edit-property-button">Save</button>
             </div>
         </section>
+
+        
 
         <footer>
             <p>&copy; 2025 HomeVest. All rights reserved.</p>
         </footer>
+            
     </body>
-</html>
