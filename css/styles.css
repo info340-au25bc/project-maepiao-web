@@ -390,6 +390,7 @@ h1 {
   color: #fff;
   border: none;
   padding: 10px 16px;
+  max-width: 50%;
   font-size: 14px;
   border-radius: 8px;
   transition: background-color 0.3s ease;
