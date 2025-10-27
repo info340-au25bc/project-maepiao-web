@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="author" content="Ryan Hoang, Meiying Piao, Thao Nguyen">
+        <meta name="description" content="HomeVest - Buy, sell, and manage properties easily">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+        <link rel="icon" type="image/png" href="img/noun-house-8122539.png">
+        <link rel="stylesheet" href="css/styles.css">
+        <title>HomeVest</title>
+    </head>
+    <body>
+        <nav>
+            <div class="logo"><a href="index.html">HomeVest</a></div>
+            <div class="nav-links">
+                <a href="index.html">Buy</a>
+                <a href="sellpage.html">Sell</a>
+                <a href="#">Manage Property</a>
+                <a href="#">Financial</a>
+            </div>
+            <div class="auth-links">
+                <a href="accountpage.html">
+                    <button class="login">Login</button>
+                </a>
+                <a href="accountpage.html">
+                    <button class="signup">Signup</button>
+                </a>
+            </div>
+        </nav>
+
+        <main>
+            <div class="overlay">
+                <div class="property-view-property-card">
+                    <img src="img/house1.jpg" alt="House" class="main-photo">
+                    <div class="details">
+                        <p class="property-view-address">2699 Green Valley, Highland Lake, FL</p>
+                        <p class="property-view-price">$729,000</p>
+                        <p><span class="material-symbols-outlined bed">bed</span>3 beds <span class="material-symbols-outlined bathtub">bathtub</span>2 Bathrooms <span class="material-symbols-outlined square-foot">square_foot</span>5x7m<sup>2</sup></p>
+                    </div>
+                    <div class="estimate-section">
+                        <p>Estimate Your Monthly Payment</p>
+                        <form class="estimate-form">
+                            <label>Down Payment</label>
+                            <input type="number" placeholder="$">
+
+                            <label>Interest Rate</label>
+                            <input type="number" placeholder="%">
+
+                            <label>Loan Term</label>
+                            <select>
+                                <option>15 years</option>
+                                <option>20 years</option>
+                                <option>30 years</option>
+                            </select>
+                            <button type="button">Calculate</button>
+                        </form>  
+                            <div class="payment-estimate">
+                                <p>Estimated Monthly Payment: $4,250/mo</p>
+                            </div>                                              
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2025 HomeVest. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
