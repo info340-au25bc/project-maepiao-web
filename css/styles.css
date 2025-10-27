@@ -544,3 +544,11 @@ button:hover {
   text-decoration: underline;
 }
 /* -------------- END of Login/Sign up page-------------- */
+
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
