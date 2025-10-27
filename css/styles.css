@@ -634,7 +634,7 @@ input {
   border-radius:5px;
 }
 
-button {
+btn {
   width: 100%;
   margin-top: 1.5rem;
   padding: 0.6rem;
@@ -645,7 +645,7 @@ button {
   cursor:pointer;
 }
 
-button:hover {
+btn:hover {
   background-color: #003366;;
   color:white;
 }
