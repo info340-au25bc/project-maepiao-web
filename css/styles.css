@@ -561,9 +561,11 @@ h1 {
   color: #111;
   border-color: #bcbcbc;
 }
+
 .button-secondary:hover { 
     background: #f3f4f6; 
 }
+
 .button-tertiary {
   background: #fff;
   color: #111;
@@ -669,7 +671,7 @@ input {
   border-radius:5px;
 }
 
-btn {
+.btn {
   width: 100%;
   margin-top: 1.5rem;
   padding: 0.6rem;
@@ -680,7 +682,7 @@ btn {
   cursor:pointer;
 }
 
-btn:hover {
+.btn:hover {
   background-color: #003366;;
   color:white;
 }
