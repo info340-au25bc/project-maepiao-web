@@ -1,0 +1,795 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+
+/* Navbar styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: white;
+    border-bottom: 1px solid lightgray;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #100A55;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #100A55;
+}
+
+.nav-links {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000929;
+    font-weight: 400;
+    font-size: .9rem;
+    line-height: 150%;
+}
+
+.nav-links a:hover {
+    color: #0077ff;
+}
+
+.auth-links a {
+    text-decoration: none
+}
+
+.auth-links button {
+    margin-left: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.login {
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #e0def7;
+}
+
+.signup {
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+}
+
+.account {
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #e0def7;
+}
+
+/* End of navbar styling */
+
+
+/* Styling for header of index */
+.properties-section {
+    padding: 2rem;
+    margin: 0 5rem;
+}
+
+.properties-section > p {
+    margin-bottom: 3rem;
+    color: #000929;
+    font-weight: 300;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #000929;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+/* End of header styling of index */
+
+
+/* Main content styling for the grid of photos */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.property-card {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-4px);
+}
+
+.property-card img {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+}
+
+.house-price {
+    margin: 1rem;
+    font-size: 1.5rem;
+    color: #000929;
+    font-weight: 700;
+}
+
+.house-address {
+    margin: 1rem;
+    color: #a9acb1;
+    font-size: 1rem;
+}
+
+.house-details {
+    margin: 1rem;
+    font-size: 1rem;
+}
+
+.price-row {
+    position: relative;
+}
+
+.favorite {
+    position: absolute;
+    top: -.4rem;
+    right: .8rem;
+    border-radius: 50%;
+    padding: 6px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: #000929;
+}
+
+.favorite:hover {
+    color: red;
+}
+
+.bed {
+    font-size: 1.3rem;
+    vertical-align: middle;
+    margin-right: 1rem;;
+    color: #000929;
+}
+
+.bathtub, .square-foot {
+    font-size: 1.3rem;
+    vertical-align: middle;
+    margin-left: 1.3rem;
+    margin-right: .5rem;
+    color: #000929;
+}
+
+.grid-container a {
+    text-decoration: none;
+    color: inherit;
+}
+
+@media (min-width: 1601px) {
+    .property-card img {
+        height: 28rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .property-card img {
+        width: 100%;
+        height: 18rem;
+        object-fit: cover;
+    }
+
+    .bed {
+        font-size: 1.3rem;
+        vertical-align: middle;
+        margin-right: 0.5rem;;
+        color: #000929;
+    }
+
+    .bathtub, .square-foot {
+        font-size: 1.3rem;
+        vertical-align: middle;
+        margin-left: 0.5rem;
+        margin-right: .5rem;
+        color: #000929;
+    }
+}
+/* End of main content styling for the grid of photos */
+
+
+/* -------------- Sell Your Home styling -------------- */
+/* Heading sections */
+.container-sell {
+  margin: 40px auto; 
+  max-width: 1200px;  
+  width: 90%;       
+  margin-top: 40px;
+}
+
+/* Enter search section */
+.long {
+    width: 420px; 
+    padding: 25px 20px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+@media (min-width: 100px) {
+  .enter-search {
+    margin: 40px auto;
+    justify-content: space-between;
+  }
+  .long {
+    width: 100%;
+  }
+  .flex-item1 {
+    width: 80%;
+  }
+}
+
+.flex-item22 {
+  margin: 0px 16px;
+}
+
+@media (min-width: 768px) {
+  .enter-search {
+    margin-left: 0px;
+    max-width: 1200px;
+    width: 90%;
+  }
+}
+
+.enter-search {
+    margin-top: 40px;
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+} 
+
+.enter-search:focus-within {
+    border-color: blue; 
+    box-shadow: 0 0 5px rgba(0, 0, 255, 0.5); 
+}
+
+/* House info input section */
+.house-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* margin: 40px auto; */
+  width: 90%;
+  max-width: 1200px;
+}
+
+@media (min-width: 768px) {
+  .house-info {
+    flex-direction: row;
+    gap: 40px;
+  }
+  
+  .price-sell,
+  .bed-sell,
+  .bath-sell,
+  .estimated-sell {
+    flex: 1;
+  }
+}
+
+.price-sell,
+.bed-sell,
+.bath-sell,
+.estimated-sell {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-sell h2,
+.bed-sell h2,
+.bath-sell h2,
+.estimated-sell h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    padding: 10px 12px;
+    width: 100%;
+}
+
+.input:focus-within {
+  border-color: #1a73e8;
+}
+
+.long-price {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    font-size: 15px;
+    color: #000;
+}
+
+/* Add photo styling */
+.add-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+  /* margin: 40px auto;  */
+  max-width: 1200px;  
+  width: 90%;       
+  margin-top: 40px;
+}
+
+.add-info > div {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+  .add-info > div {
+    width: 48%;
+  }
+}
+
+@media (max-width: 768px) { 
+  .flex-container {
+    flex-direction: column; /* Change to column layout on smaller screens */
+  }
+  .flex-item {
+    flex: 100%; /* Make items take full width on smaller screens */
+  }
+}
+
+.add-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px dashed #d0d0d0;
+  border-radius: 12px;
+  height: 250px;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+}
+
+.add-section::before {
+  content: "+";
+  font-size: 60px;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.add-photo-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  max-width: 50%;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.add-photo-button:hover {
+  background-color: #333;
+}
+
+.add-info img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* -------------- Manage your Property -------------*/
+
+.body-manage {
+  margin: 40px auto;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.property2 {
+  text-align: left;
+}
+
+
+.edit-property-button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  text-decoration: none;
+  padding: 10px 16px;
+  max-width: 50%;
+  font-size: 14px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  margin: 0px 16px 18px 16px;
+}
+
+.edit-property-button:hover {
+  background-color: #333;
+}
+
+
+/* -------------- Account Page -------------*/
+/* Profile styling */
+.account-container{
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    gap: 2rem;
+}
+
+.profile-card, .settings-card{
+  align-items: center;
+  padding: 1.25rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.profile-email { 
+    margin: .2rem 0 0; 
+    color: #6b7280; 
+}
+
+.profile-meta button {
+  margin-top: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.profile-meta button:hover {
+  background-color: #555;
+}
+
+.redirect-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #000;
+  color: #fff;
+  padding: .5rem 1rem;
+  z-index: 1000;
+}
+.skip-link:focus {
+  left: 1rem;
+}
+
+/* Layout */
+.account-container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .account-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .profile-card {
+    grid-column: 1 / -1;
+  }
+}
+
+/* section cards */
+.card {
+  padding: 1.25rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.card.danger {
+  border-color: #fca5a5;
+  background: #fff7f7;
+}
+
+/* Profile meta */
+.profile-meta .profile-name {
+  margin: .25rem 0 0;
+  font-weight: 600;
+  color: #000929;
+}
+.profile-meta .profile-email {
+  margin: .2rem 0 1rem;
+  color: #6b7280;
+}
+.button-row {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: .5rem .9rem;
+  border-radius: 6px;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+.button:hover { 
+    background: #333; 
+}
+
+.button-secondary {
+  background: #fff;
+  color: #111;
+  border-color: #bcbcbc;
+}
+
+.button-secondary:hover { 
+    background: #f3f4f6; 
+}
+
+.button-tertiary {
+  background: #fff;
+  color: #111;
+  border-color: #bcbcbc;
+  padding: .4rem .7rem;
+}
+.button-tertiary:hover { background: #f9fafb; }
+
+.form-actions {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.form-help {
+  min-height: 1em;
+  color: #065f46;
+}
+
+/* Saved homes list */
+.saved-list {
+  display: grid;
+  gap: .75rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.saved-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: .75rem;
+  align-items: center;
+}
+.saved-thumb img {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+.saved-title {
+  font-weight: 600;
+  color: #0f172a;
+  text-decoration: none;
+}
+.saved-title:hover { text-decoration: underline; }
+.saved-sub {
+  margin: .1rem 0 0;
+  color: #aebbd5;
+  font-size: .9rem;
+}
+/* -------------- END of Account Page -------------*/
+
+
+/* -------------- Login/Sign up page-------------- */
+.login-header {
+  background-color: #cfe5fd;
+  text-align: center;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+.login-main {
+  background-color: #f5f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.form-box {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+}
+
+input {
+  width: 100%;
+  padding: auto;
+  margin-top: 0.25rem;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.6rem;
+  background-color:#003366;
+  color: white;
+  border:none;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.btn:hover {
+  background-color: #003366;;
+  color:white;
+}
+
+.switch-text {
+  text-align: center;
+  margin-top:1rem;
+}
+
+.switch-text a {
+  color: #003366;
+  text-decoration: none;
+}
+
+.switch-text a:hover {
+  text-decoration: underline;
+}
+/* -------------- END of Login/Sign up page-------------- */
+
+/* Property View Page Styling */
+.overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.property-view-property-card {
+    background: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 90rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.main-photo {
+    width: 100%;
+    max-height: 35rem;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.details {
+    margin-top: 1rem;
+}
+
+.property-view-address {
+    text-align: center;
+    margin: 0;
+    color: #0a0a23;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.property-view-price {
+    font-size: 1.5rem;
+    color: #007b5e;
+    margin: 10px 0;
+}
+
+.estimate-section {
+    margin-top: 3rem;
+}
+
+.estimate-section > p {
+    font-size: 1.7rem;
+    color: #000929;
+}
+
+.estimate-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.estimate-form label {
+    width: 100%;
+    font-weight: 600;
+    color: #000929;
+}
+
+.estimate-form input, .estimate-form select {
+    width: 20%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.estimate-form button {
+    background-color: white;
+    border-radius: 6px;
+    border-color: #000929;
+    cursor: pointer;
+}
+.payment-estimate p {
+    font-size: 1.2rem;
+    color: #000929;
+}
+/* End of Property View Page Styling */
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}

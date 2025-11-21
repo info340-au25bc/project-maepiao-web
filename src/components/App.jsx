@@ -1,7 +1,14 @@
+import React from "react";
+import Header from "../layouts/Header";
+
 export default function App(props) {
     return (
-        <header>
-            <h1>HomeVest</h1>
-        </header>
-    )
+        <div>
+            <Header />
+            <main>
+                <h1>HomeVest</h1>
+                {props.children}
+            </main>
+        </div>
+    );
 }
