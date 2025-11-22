@@ -258,12 +258,12 @@ h1 {
   .long {
     width: 100%;
   }
-  .flex-item1 {
+  .input-wrapper {
     width: 80%;
   }
 }
 
-.flex-item22 {
+.search-icon {
   margin: 0px 16px;
 }
 
@@ -380,10 +380,10 @@ h1 {
 
 @media (max-width: 768px) { 
   .flex-container {
-    flex-direction: column; /* Change to column layout on smaller screens */
+    flex-direction: column; 
   }
-  .flex-item {
-    flex: 100%; /* Make items take full width on smaller screens */
+  .input-field {
+    flex: 100%; 
   }
 }
 
