@@ -18,10 +18,7 @@ export default function Header() {
 				</div>
 				<div className="auth-links">
 					<NavLink to="/account">
-						<button className="login">Login</button>
-					</NavLink>
-					<NavLink to="/account">
-						<button className="signup">Signup</button>
+						<button className="account">Account</button>
 					</NavLink>
 				</div>
 			</nav>
