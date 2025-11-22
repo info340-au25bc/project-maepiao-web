@@ -1,22 +1,29 @@
 
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
+	const active = ({ isActive }) => (isActive ? "active" : undefined);
+
 	return (
 		<nav>
-			<div className="logo"><a href="/">HomeVest</a></div>
-			<div className="nav-links">
-				<a href="/">Buy</a>
-				<a href="/sellpage.html">Sell</a>
-				<a href="/manageproperty.html">Manage Property</a>
+			<div className="logo">
+				<NavLink to="/" className={active}>HomeVest</NavLink>
 			</div>
+
+			<div className="nav-links">
+				<NavLink to="/" className={active}>Buy</NavLink>
+				<NavLink to="/sell" className={active}>Sell</NavLink>
+				<NavLink to="/manage" className={active}>Manage Property</NavLink>
+			</div>
+
 			<div className="auth-links">
-				<a href="/accountpage.html">
+				<NavLink to="/account">
 					<button className="login">Login</button>
-				</a>
-				<a href="/accountpage.html">
+				</NavLink>
+				<NavLink to="/account">
 					<button className="signup">Signup</button>
-				</a>
+				</NavLink>
 			</div>
 		</nav>
 	);

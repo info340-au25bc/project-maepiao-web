@@ -1,0 +1,76 @@
+/* Minimal styles ported from the static editproperty layout.
+   Adjust or expand as needed — this file is intentionally scoped to the edit page. */
+
+.edit-property-page {
+  padding: 24px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+}
+
+.container-sell {
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.h1-sell {
+  font-size: 28px;
+  margin: 0 0 6px 0;
+}
+
+.lead-sell {
+  color: #555;
+  margin: 0 0 18px 0;
+}
+
+.body-manage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  flex-direction: column;
+}
+
+.house-info {
+  min-width: 280px;
+  display: grid;
+  gap: 12px;
+}
+
+
+
+.flex-item2 { 
+    font-weight: 600; 
+    margin-bottom: 6px;
+}
+
+.input { 
+    display: flex; 
+    align-items: center;
+    gap: 8px; 
+}
+
+.flex-item { flex: 1; }
+.long-price { 
+    width: 100%; 
+    padding: 8px; 
+    border-radius: 4px; 
+    border: 1px solid #ddd; 
+}
+
+.add-info {
+  flex: 1 1 300px;
+  min-width: 260px;
+  display: grid;
+  gap: 12px;
+}
+
+.add-photo-button { padding: 10px 12px; border-radius: 6px; background: #0077ff; color: white; border: none; cursor: pointer; }
+.add-photo-button:hover { opacity: 0.95; }
+
+.photo1 img, .photo2 img, .photo3 img { width: 100%; height: auto; border-radius: 6px; display: block; }
+
+.edit-property-button { padding: 12px 18px; border-radius: 8px; background: #00a86b; color: white; border: none; cursor: pointer; }
+.save-row { width: 100%; margin-top: 12px; }
+
+@media (max-width: 700px) {
+  .body-manage { flex-direction: column; }
+}
