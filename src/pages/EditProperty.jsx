@@ -81,7 +81,7 @@ export default function EditProperty() {
                         </div>
                     ))}
                 </div>
-            <Link to="/save">
+            <Link to="/manage">
                 <div className="save-row">
                     <button className="edit-property-button">Save</button>
                 </div>
