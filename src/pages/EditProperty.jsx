@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styles/editpage.css";
 
 export default function EditProperty() {
@@ -80,10 +81,11 @@ export default function EditProperty() {
                         </div>
                     ))}
                 </div>
-
+            <Link to="/save">
                 <div className="save-row">
                     <button className="edit-property-button">Save</button>
                 </div>
+            </Link>
             </section>
         </div>
     );
