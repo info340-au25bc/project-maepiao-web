@@ -1,0 +1,26 @@
+{
+    "id": "1",
+    "address": "2999 Green Valley, Highland Lake, FL",
+    "beds": 3,
+    "baths": 2,
+    "sqft": 1800,
+    "price": 729000,
+    "imgs": [
+        {
+            "path": "/images/house1.jpg",
+            "description": "Front view of the house"
+        }, {
+            "path": "/images/house2.jpeg",
+            "description": "Living room area"
+        }, {
+            "path": "/images/house3.webp",
+            "description": "Backyard garden"
+        }, {
+            "path": "/images/house4.jpg",
+            "description": "Kitchen space"
+        }, {
+            "path": "/images/house5.jpg",
+            "description": "Master bedroom"
+        }
+    ]
+}
