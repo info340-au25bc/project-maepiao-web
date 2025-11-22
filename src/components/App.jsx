@@ -7,6 +7,7 @@ import ManagePropertyPage from "../pages/ManagePropertyPage";
 import AccountPage from "../pages/AccountPage";
 import EditProperty from "../pages/EditProperty";
 import Footer from "../layouts/Footer";
+import LoginPage from "../pages/LoginPage.jsx";
 
 export default function App(props) {
     return (
@@ -20,6 +21,7 @@ export default function App(props) {
                     <Route path="/account" element={<AccountPage />} />
                     <Route path="/edit" element={<EditProperty />} />
                     <Route path="*" element={<Navigate to="/" />} />
+                    <Route path="/login" element={<LoginPage />} /> 
                 </Routes>
             </main>
             <Footer />

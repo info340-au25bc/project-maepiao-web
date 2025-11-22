@@ -17,8 +17,8 @@ export default function Header() {
 					<NavLink to="/manage" className={active}>Manage Property</NavLink>
 				</div>
 				<div className="auth-links">
-					<NavLink to="/account">
-						<button className="account">Account</button>
+					<NavLink to="/login">
+						<button className="login">Login</button>
 					</NavLink>
 				</div>
 			</nav>
