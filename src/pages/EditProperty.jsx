@@ -1,8 +1,5 @@
 import React from "react";
 import "../styles/editpage.css";
-import house1 from "../images/house1.jpg";
-import house2 from "../images/house2.jpeg";
-import house3 from "../images/house3.webp";
 
 export default function EditProperty() {
     return (
@@ -51,13 +48,13 @@ export default function EditProperty() {
                         <button className="add-photo-button">Add New Photo</button>
                     </div>
                     <div className="photo1">
-                        <img src={house1} alt="house-1" />
+                        <img src="/images/house1.jpg" alt="house-1" />
                     </div>
                     <div className="photo2">
-                        <img src={house2} alt="house-2" />
+                        <img src="/images/house2.jpeg" alt="house-2" />
                     </div>
                     <div className="photo3">
-                        <img src={house3} alt="house-3" />
+                        <img src="/images/house3.webp" alt="house-3" />
                     </div>
                 </div>
 

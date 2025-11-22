@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/editpage.css";
-import house1 from "../images/house1.jpg";
 
 export default function ManagePropertyPage() {
     return (
@@ -18,7 +17,7 @@ export default function ManagePropertyPage() {
 
                 <div className="listing-selection">
                     <div className="property-card">
-                        <img src={house1} alt="house-1" />
+                        <img src="images/house1.jpg" alt="house-1" />
                         <div className="price-row2">
                             <p className="house-price">$729,000</p>
                         </div>

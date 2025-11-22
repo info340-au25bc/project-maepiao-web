@@ -1,10 +1,5 @@
 import React from "react";
 import "../styles/editpage.css";
-import house1 from "../images/house1.jpg";
-import house2 from "../images/house2.jpeg";
-import house3 from "../images/house3.webp";
-import house4 from "../images/house4.jpg";
-import house5 from "../images/house5.jpg";
 
 export default function SellPage() {
     return (
@@ -58,19 +53,19 @@ export default function SellPage() {
                         <button className="add-photo-button">Add New Photo</button>
                     </div>
                     <div className="photo1">
-                        <img src={house1} alt="house-1" />
+                        <img src="/images/house1.jpg" alt="house-1" />
                     </div>
                     <div className="photo2">
-                        <img src={house2} alt="house-2" />
+                        <img src="images/house2.jpeg" alt="house-2" />
                     </div>
                     <div className="photo3">
-                        <img src={house3} alt="house-3" />
+                        <img src="/images/house3.webp" alt="house-3" />
                     </div>
                     <div className="photo4">
-                        <img src={house4} alt="house-4" />
+                        <img src="/images/house4.jpg" alt="house-4" />
                     </div>
                     <div className="photo5">
-                        <img src={house5} alt="house-5" />
+                        <img src="/images/house5.jpg" alt="house-5" />
                     </div>
                 </div>
             </section>
