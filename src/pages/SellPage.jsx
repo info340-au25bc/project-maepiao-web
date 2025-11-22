@@ -35,7 +35,7 @@ export default function SellPage() {
 
             <section className="body-manage">
                 <div className="enter-search">
-                    <div className="flex-item1"><input className="long" type="text" placeholder="Enter an address, neighborhood, city, or ZIP code" defaultValue={form.address} /></div>
+                    <div className="flex-item1"><input className="long" type="text" placeholder="Enter an address, neighborhood, city, or ZIP code"/></div>
                     <div className="flex-item22">🔍</div>
                 </div>
 
@@ -44,21 +44,21 @@ export default function SellPage() {
                         <div className="flex-item2"><h2>Price</h2></div>
                         <div className="input">
                             <div className="flex-item2">$</div>
-                            <div className="flex-item"><input className="long-price" type="number" defaultValue={form.price} /></div>
+                            <div className="flex-item"><input className="long-price" type="number" /></div>
                         </div>
                     </div>
 
                     <div className="bed-sell">
                         <div className="flex-item2"><h2>Beds</h2></div>
                         <div className="input">
-                            <div className="flex-item"><input className="long-price" type="number" defaultValue={form.beds} /></div>
+                            <div className="flex-item"><input className="long-price" type="number" /></div>
                         </div>
                     </div>
 
                     <div className="bath-sell">
                         <div className="flex-item2"><h2>Bathrooms</h2></div>
                         <div className="input">
-                            <div className="flex-item"><input className="long-price" type="number" defaultValue={form.baths} /></div>
+                            <div className="flex-item"><input className="long-price" type="number" /></div>
                         </div>
                     </div>
 
