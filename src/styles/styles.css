@@ -10,8 +10,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background-color: white;
-    border-bottom: 1px solid lightgray;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .menu-toggle {
@@ -38,6 +38,7 @@ nav {
     display: flex;
     gap: 5rem;
     align-items: center;
+    color: #000929;
 }
 
 .nav-links a {
@@ -49,12 +50,15 @@ nav {
 }
 
 .nav-links a:hover {
-    color: #0077ff;
+    color: #00439b;
+    font-weight: 800;
+    font-size: 2rem;
+    box-sizing: border-box
 }
 
 .nav-links .active {
-  color: #0077ff;
-  border-bottom: 2px solid #0077ff;
+  color: #00439b;
+  border-bottom: 2px solid #00439b;
   padding-bottom: 2px;
 }
 
@@ -648,9 +652,9 @@ h1 {
 
 /* -------------- Login/Sign up page-------------- */
 .login-header {
-  background-color: #cfe5fd;
-  text-align: center;
+  background-color: #003366;
   color: white;
+  text-align: center;
   padding: 2rem 1rem;
 }
 
