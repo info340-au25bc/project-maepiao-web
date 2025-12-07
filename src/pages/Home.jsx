@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { getDatabase, ref as databaseRef, onValue } from "firebase/database";
 
 export default function Home() {
     const [houses, setHouses] = useState([]);
@@ -24,10 +25,17 @@ export default function Home() {
     }
 
     useEffect(() => {
-        fetch('/temp-house-objects/temp-house-objects.json')
-            .then((res) => res.json())
-            .then((data) => setHouses(data))
-            .catch((err) => console.error("Error loading houses: ", err))
+        // fetch('/temp-house-objects/temp-house-objects.json')
+        //     .then((res) => res.json())
+        //     .then((data) => setHouses(data))
+        //     .catch((err) => console.error("Error loading houses: ", err))
+        const db = getDatabase();
+        const housesRef = databaseRef(db, 'houses/');
+        onValue(housesRef, (snapshot) => {
+            const data = snapshot.val();
+            const housesArray = Object.keys(data).map((key) => data[key])
+            setHouses(housesArray);
+        })
     }, []);
 
     useEffect(() => {
