@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getDatabase, ref as databaseRef, onValue } from "firebase/database";
+import { getDatabase, ref as databaseRef, onValue, remove } from "firebase/database";
 import { useUser } from "../contexts/UserContext";
 import "../styles/editpage.css";
 
@@ -35,6 +35,23 @@ export default function ManagePropertyPage() {
 
     function handleHouseClick(house) {
         navigate(`/edit/${house.id}`);
+    }
+
+    async function handleDelete(houseId, e) {
+        e.stopPropagation(); // Prevent triggering the card click
+        
+        if (!window.confirm('Are you sure you want to delete this property? This action cannot be undone.')) {
+            return;
+        }
+
+        try {
+            const db = getDatabase();
+            const houseRef = databaseRef(db, `houses/${houseId}`);
+            await remove(houseRef);
+        } catch (err) {
+            console.error("Error deleting property:", err);
+            alert("Failed to delete property. Please try again.");
+        }
     }
 
     if (!user) {
@@ -72,6 +89,12 @@ export default function ManagePropertyPage() {
                                     onClick={() => handleHouseClick(house)}
                                 >
                                     Edit Your Property
+                                </button>
+                                <button 
+                                    className="edit-property-button"
+                                    onClick={(e) => handleDelete(house.id, e)}
+                                >
+                                    Delete
                                 </button>
                             </div>
                         ))
