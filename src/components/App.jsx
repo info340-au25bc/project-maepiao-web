@@ -8,36 +8,40 @@ import AccountPage from "../pages/AccountPage";
 import EditProperty from "../pages/EditProperty";
 import Footer from "../layouts/Footer";
 import LoginPage from "../pages/LoginPage.jsx";
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth, createUserIfMissing } from "../firebase";
+import { UserProvider } from "../contexts/UserContext";
+import ProtectedRoute from "./ProtectedRoute";
 
 
 export default function App() {
-    useEffect(() => {
-        const stop = onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                await createUserIfMissing(user);
-            }
-        });
-        return stop;
-    }, []);
-    
     return (
-        <div>
-            <Header />
-            <main>
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/sell" element={<SellPage />} />
-                    <Route path="/manage" element={<ManagePropertyPage />} />
-                    <Route path="/account" element={<AccountPage />} />
-                    <Route path="/edit" element={<EditProperty />} />
-                    <Route path="*" element={<Navigate to="/" />} />
-                    <Route path="/login" element={<LoginPage />} /> 
-                </Routes>
-            </main>
-            <Footer />
-        </div>
+        <UserProvider>
+            <div>
+                <Header />
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/sell" element={
+                            <ProtectedRoute>
+                                <SellPage />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/manage" element={
+                            <ProtectedRoute>
+                                <ManagePropertyPage />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/account" element={<AccountPage />} />
+                        <Route path="/edit/:houseId" element={
+                            <ProtectedRoute>
+                                <EditProperty />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="*" element={<Navigate to="/" />} />
+                        <Route path="/login" element={<LoginPage />} /> 
+                    </Routes>
+                </main>
+                <Footer />
+            </div>
+        </UserProvider>
     );
 }

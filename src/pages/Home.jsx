@@ -67,7 +67,7 @@ export default function Home() {
             {selectedHouse && (
                 <div className="overlay" onClick={() => setSelectedHouse(null)}>
                     <div className="property-view-property-card" onClick={(e) => e.stopPropagation()}>
-                        <img src={selectedHouse.img} alt={selectedHouse.address} className="main-photo"/>
+                        <img src={selectedHouse.img?.[0]} alt={selectedHouse.address} className="main-photo"/>
                         <div className="details">
                             <p className="property-view-address">{selectedHouse.address}</p>
                             <p className="property-view-price">${selectedHouse.price.toLocaleString()}</p>
@@ -109,7 +109,7 @@ function HouseCard(props) {
     const setSelectedHouseFunction = props.setSelectedHouse
     return (
         <div className="property-card" onClick={() => setSelectedHouseFunction(house)}>
-            <img src={house.img} alt={house.address} />
+            <img src={house.img?.[0]} alt={house.address} />
             <div className="price-row">
                 <p className="house-price">${house.price.toLocaleString()}</p>
                 <span className="material-symbols-outlined favorite">favorite</span>
