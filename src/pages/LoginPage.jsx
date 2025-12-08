@@ -66,7 +66,7 @@ export default function LoginPage() {
           {mode === "login" && (
             <section className="form-box" aria-label="Login form">
               <h2>Login</h2>
-              <form onsubmit={handleLogin}>
+              <form onSubmit={handleLogin}>
                 <label htmlFor="login-email">Email</label>
                 <input type="email" id="login-email" placeholder="Enter your email" required/>
 
