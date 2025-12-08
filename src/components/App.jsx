@@ -8,8 +8,21 @@ import AccountPage from "../pages/AccountPage";
 import EditProperty from "../pages/EditProperty";
 import Footer from "../layouts/Footer";
 import LoginPage from "../pages/LoginPage.jsx";
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, createUserIfMissing } from "../firebase";
 
-export default function App(props) {
+
+export default function App() {
+    useEffect(() => {
+        const stop = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                await createUserIfMissing(user);
+            }
+        });
+        return stop;
+    }, []);
+    
     return (
         <div>
             <Header />
