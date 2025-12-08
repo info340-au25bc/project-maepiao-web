@@ -167,39 +167,108 @@ export default function EditProperty() {
 
             <section className="body-manage">
                 {error && (
-                    <div style={{ color: 'red', marginBottom: '1rem', padding: '0.5rem' }}>
+                    <div style={{ color: 'red', marginBottom: '1rem', padding: '0.5rem', whiteSpace: 'pre-line' }}>
                         {error}
                     </div>
                 )}
-                <div className="house-info">
-                    <div className="price-sell">
+                
+                {/* Address Row */}
+                <div className="form-row full-width">
+                    <div className="form-field">
+                        <div className="flex-item2"><h2>Address</h2></div>
+                        <div className="input">
+                            <div className="flex-item">
+                                <input 
+                                    className="long-price" 
+                                    type="text" 
+                                    placeholder="Enter address, neighborhood, city, or ZIP code"
+                                    value={form.address}
+                                    onChange={(e) => updateField("address", e.target.value)}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Price, Beds, SqFt, Baths Row */}
+                <div className="form-row four-columns">
+                    <div className="form-field">
                         <div className="flex-item2"><h2>Price</h2></div>
                         <div className="input">
                             <div className="flex-item2">$</div>
                             <div className="flex-item">
-                                <input value={form.price} onChange={(e) => updateField("price", e.target.value)} className="long-price" type="number" />
+                                <input 
+                                    className="long-price" 
+                                    type="number" 
+                                    placeholder="0"
+                                    value={form.price}
+                                    onChange={(e) => updateField("price", e.target.value)}
+                                />
                             </div>
                         </div>
                     </div>
 
-                    <div className="bed-sell">
+                    <div className="form-field">
                         <div className="flex-item2"><h2>Beds</h2></div>
                         <div className="input">
-                            <div className="flex-item"><input value={form.beds} onChange={(e) => updateField("beds", e.target.value)} className="long-price" type="number" /></div>
+                            <div className="flex-item">
+                                <input 
+                                    className="long-price" 
+                                    type="number" 
+                                    placeholder="0"
+                                    value={form.beds}
+                                    onChange={(e) => updateField("beds", e.target.value)}
+                                />
+                            </div>
                         </div>
                     </div>
 
-                    <div className="bath-sell">
+                    <div className="form-field">
+                        <div className="flex-item2"><h2>Square Feet</h2></div>
+                        <div className="input">
+                            <div className="flex-item">
+                                <input 
+                                    className="long-price" 
+                                    type="number" 
+                                    placeholder="0"
+                                    value={form.sqft}
+                                    onChange={(e) => updateField("sqft", e.target.value)}
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="form-field">
                         <div className="flex-item2"><h2>Bathrooms</h2></div>
                         <div className="input">
-                            <div className="flex-item"><input value={form.baths} onChange={(e) => updateField("baths", e.target.value)} className="long-price" type="number" /></div>
+                            <div className="flex-item">
+                                <input 
+                                    className="long-price" 
+                                    type="number" 
+                                    placeholder="0"
+                                    value={form.baths}
+                                    onChange={(e) => updateField("baths", e.target.value)}
+                                />
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <div className="estimated-sell">
+                {/* Estimated Price Row */}
+                <div className="form-row full-width">
+                    <div className="form-field">
                         <div className="flex-item2"><h2>Estimated Price</h2></div>
                         <div className="input">
-                            <div className="flex-item"><input value={form.estimated} disabled className="long-price" type="number" placeholder="$0" /></div>
+                            <div className="flex-item2">$</div>
+                            <div className="flex-item">
+                                <input 
+                                    disabled 
+                                    value={form.estimated} 
+                                    className="long-price" 
+                                    type="number" 
+                                    placeholder="0" 
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

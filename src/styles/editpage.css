@@ -32,6 +32,44 @@
   gap: 12px;
 }
 
+/* Form Row Layout */
+.form-row {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.form-row.full-width {
+  display: block;
+}
+
+.form-row.four-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.form-field {
+  min-width: 0;
+}
+
+.form-field h2 {
+  font-size: 16px;
+  margin: 0;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .form-row.four-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .form-row.four-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 .flex-item2 { 
@@ -42,6 +80,7 @@
 .input { 
     display: flex; 
     align-items: center;
+    /* width: 80%; */
     gap: 8px; 
 }
 

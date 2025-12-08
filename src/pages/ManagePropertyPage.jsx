@@ -58,7 +58,7 @@ export default function ManagePropertyPage() {
                         <p>No properties found. Create a new listing on the Sell page.</p>
                     ) : (
                         houses.map((house) => (
-                            <div key={house.id} className="property-card">
+                            <div key={house.id} className="property-card" style={{marginBottom: '20px'}}>
                                 <img 
                                     src={house.img && house.img[0] ? house.img[0] : '/images/placeholder.jpg'} 
                                     alt={house.address} 
