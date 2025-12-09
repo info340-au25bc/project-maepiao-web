@@ -21,7 +21,7 @@ export default function Header() {
 	}
 
 	return (
-		<header>
+		<header className="site-header">
 			<nav aria-label="Primary site navigation" className={isMenuOpen ? "nav-open" : ""}>
 				<div className="logo">
 					<NavLink to="/" className={active} onClick={closeMenu}>HomeVest</NavLink>
