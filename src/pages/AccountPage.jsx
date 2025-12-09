@@ -45,7 +45,7 @@ export default function AccountPage() {
         const db = getDatabase();
         const favRef = databaseRef(db, `userFavorites/${user.uid}`);
 
-        onValue(favRef, (snapshot) => {
+        const unsubscribe = onValue(favRef, (snapshot) => {
             const data = snapshot.val() || {};
             const homesArray = Object.entries(data).map(([id, value])=> ({
                 id,
@@ -53,6 +53,8 @@ export default function AccountPage() {
             }));
             setSavedHomes(homesArray);
         });
+
+        return unsubscribe;
     }, [user.uid]);
 
     return (

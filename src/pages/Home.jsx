@@ -47,7 +47,7 @@ export default function Home() {
     useEffect(() => {
         const db = getDatabase();
         const housesRef = databaseRef(db, 'houses/');
-        onValue(housesRef, (snapshot) => {
+        const unsubscribe = onValue(housesRef, (snapshot) => {
             const data = snapshot.val();
             if (!data) {
                 setHouses([]);
@@ -59,6 +59,8 @@ export default function Home() {
             }))
             setHouses(housesArray);
         })
+
+        return unsubscribe;
     }, []);
 
     useEffect(() => {
@@ -70,10 +72,12 @@ export default function Home() {
         const db = getDatabase()
         const favRef = databaseRef(db, `userFavorites/${user.uid}`);
 
-        onValue(favRef, (snapshot) => {
+        const unsubscribe = onValue(favRef, (snapshot) => {
             const data = snapshot.val() || {};
             setFavorites(data);
         });
+
+        return unsubscribe;
     }, [user]);
 
 
