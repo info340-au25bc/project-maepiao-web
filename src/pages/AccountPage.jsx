@@ -74,7 +74,7 @@ export default function AccountPage() {
                 <a className="button" href="#edit-profile">
                 Edit Profile
                 </a>
-                <button className="button button-secondary" type="button" onClick={() => handleLogout()}>
+                <button className="button button-secondary" type="button" onClick={handleLogout}>
                 Log Out
                 </button>
             </div>

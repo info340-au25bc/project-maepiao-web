@@ -34,7 +34,7 @@ export default function Home() {
 
     const toggleFavorite = async (house) => {
         if (!user) {
-            alert("Please log in to favorite properties.");
+             navigate("/login");
             return;
         }
 

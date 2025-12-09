@@ -17,7 +17,7 @@ export default function App() {
         <UserProvider>
             <div>
                 <Header />
-                <main>
+                <main id="main">
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/sell" element={
