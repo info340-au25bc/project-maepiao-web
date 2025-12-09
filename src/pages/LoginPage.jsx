@@ -1,13 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
+import { useLocation } from "react-router-dom";
 
 export default function LoginPage() {
   const [mode, setMode] = useState("login");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+    useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const urlMode = params.get("mode");
+
+    if (urlMode === "signup") {
+      setMode("signup");
+    } else if (urlMode === "login") {
+      setMode("login");
+    }
+  }, [location.search]);
 
   async function handleLogin(event) {
     event.preventDefault();

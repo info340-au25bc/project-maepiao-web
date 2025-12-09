@@ -45,7 +45,7 @@ export default function Header() {
 					) : (
 						<>
 							<NavLink to="/login"><button className="login">Log in</button></NavLink>
-            				<NavLink to="/signup"><button className="signup">Sign up</button></NavLink>
+            				<NavLink to="/login?mode=signup"><button className="signup">Sign up</button></NavLink>
 						</>
 					)}
 				</div>

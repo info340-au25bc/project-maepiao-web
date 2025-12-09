@@ -51,15 +51,13 @@ nav {
 
 .nav-links a:hover {
     color: #00439b;
-    font-weight: 800;
-    font-size: 2rem;
-    box-sizing: border-box
 }
 
 .nav-links .active {
   color: #00439b;
   border-bottom: 2px solid #00439b;
   padding-bottom: 2px;
+  font-weight: 600;
 }
 
 .logo .active {
