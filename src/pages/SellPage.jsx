@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { getDatabase, ref as databaseRef, push } from "firebase/database";
 import { useUser } from "../contexts/UserContext";
 import "../styles/editpage.css";
-import React, { useState, useRef } from "react";
-
 
 export default function SellPage() {
     const { user, loading } = useUser();
