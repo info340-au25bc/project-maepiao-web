@@ -534,8 +534,20 @@ h1 {
   padding: .5rem 1rem;
   z-index: 1000;
 }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  padding: 0.5rem 1rem;
+  background: white;
+  border: 1px solid #000929;
+  z-index: 1000;
+}
+
 .skip-link:focus {
   left: 1rem;
+  top: 1rem;
 }
 
 /* Layout */
@@ -872,7 +884,10 @@ input {
   gap: 0.5rem;
   margin-top: 1rem;
 }
-
+.error-text {
+    color: #b91c1c;
+    margin-top: 1rem;
+}
 footer {
   text-align: center;
   padding: 1rem;

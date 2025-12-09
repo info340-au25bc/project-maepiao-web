@@ -1,4 +1,3 @@
-import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { getDatabase, ref as databaseRef, push } from "firebase/database";
 import { useUser } from "../contexts/UserContext";

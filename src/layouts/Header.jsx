@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
 
@@ -22,6 +22,10 @@ export default function Header() {
 
 	return (
 		<header>
+			<a href="#main" className="skip-link">
+				Skip to main content
+			</a>
+			
 			<nav aria-label="Primary site navigation" className={isMenuOpen ? "nav-open" : ""}>
 				<div className="logo">
 					<NavLink to="/" className={active} onClick={closeMenu}>HomeVest</NavLink>

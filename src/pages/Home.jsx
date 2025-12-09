@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref as databaseRef, onValue, set, remove } from "firebase/database";
 import { useUser } from "../contexts/UserContext";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Home() {
     const [houses, setHouses] = useState([]);
@@ -11,6 +12,9 @@ export default function Home() {
     const [interestRate, setInterestRate] = useState('');
     const [loanTerm, setLoanTerm] = useState(15);
     const [monthlyPayment, setMonthlyPayment] = useState(null);
+
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState('');
 
     const { user } = useUser();
     const [favorites, setFavorites] = useState({});
@@ -47,20 +51,29 @@ export default function Home() {
     useEffect(() => {
         const db = getDatabase();
         const housesRef = databaseRef(db, 'houses/');
+
+        setLoading(true);
+        setError("");
+
         const unsubscribe = onValue(housesRef, (snapshot) => {
             const data = snapshot.val();
             if (!data) {
                 setHouses([]);
                 return;
-            }
-            const housesArray = Object.entries(data).map(([id, value]) => ({
-                id,
-                ...value,
+            } else {
+                const housesArray = Object.entries(data).map(([id, value]) => ({
+                    id,
+                    ...value,
             }))
             setHouses(housesArray);
-        })
-
-        return unsubscribe;
+        }
+        setLoading(false);
+        }, (err) => {
+            console.error("Error loading houses:", err);
+            setError("Failed to load listings. Please try again later.");
+            setLoading(false);
+        });
+        return() => unsubscribe;
     }, []);
 
     useEffect(() => {
@@ -102,11 +115,26 @@ export default function Home() {
         <div className="properties-section">
             <h1>Browse Properties</h1>
             <p>Top Picks Near You</p>
-            <div className="grid-container">
-                {houses.map((house) => {
-                    return <HouseCard houseObj={house} key={house.address} setSelectedHouse={setSelectedHouse} isFavorite={!!favorites[house.id]} onToggleFavorite={() => toggleFavorite(house)} />
-                })}
+            
+            {loading ?(
+                <div className="loading-state" aria-live="polite">
+                <ClipLoader />
+                <p>Loading listings…</p>
             </div>
+        ) : error ? (
+            <p className="error-text" role="alert">
+                {error}
+            </p>
+        ) : houses.length === 0 ? (
+            <p>No listings are available right now. Please check back later.</p>
+        ) : (
+                <div className="grid-container">
+                    {houses.map((house) => {
+                        return <HouseCard houseObj={house} key={house.address} setSelectedHouse={setSelectedHouse} isFavorite={!!favorites[house.id]} onToggleFavorite={() => toggleFavorite(house)} />
+                    })}
+                </div>
+        )}
+            
             {selectedHouse && (
                 <div className="overlay" onClick={() => setSelectedHouse(null)}>
                     <div className="property-view-property-card" onClick={(e) => e.stopPropagation()}>
@@ -114,7 +142,14 @@ export default function Home() {
                         <div className="details">
                             <p className="property-view-address">{selectedHouse.address}</p>
                             <p className="property-view-price">${selectedHouse.price.toLocaleString()}</p>
-                            <p><span className="material-symbols-outlined bed">bed</span>{selectedHouse.beds} beds <span className="material-symbols-outlined bathtub">bathtub</span>{selectedHouse.baths} Bathrooms <span className="material-symbols-outlined square-foot">square_foot</span>{selectedHouse.sqft}</p>
+                            <p>
+                                <span className="material-symbols-outlined bed">bed</span>
+                                {selectedHouse.beds} beds{" "}
+                                <span className="material-symbols-outlined bathtub">bathtub</span>
+                                {selectedHouse.baths} Bathrooms{" "}
+                                <span className="material-symbols-outlined square-foot">square_foot</span>
+                                {selectedHouse.sqft}
+                            </p>
                         </div>
                         <div className="estimate-section">
                             <p>Estimate Your Monthly Payment</p>
