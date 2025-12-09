@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useUser } from "../contexts/UserContext";
+import { getDatabase, ref as databaseRef, onValue, remove } from 'firebase/database';
 
 export default function AccountPage() {
     const { user, logout } = useUser();
     const navigate = useNavigate();
+
+    const [savedHomes, setSavedHomes] = useState([]);
+
+    const handleRemoveSaved = (id) => {
+        const db = getDatabase();
+        const favRef = databaseRef(db, `userFavorites/${user.uid}/${id}`);
+        remove(favRef);
+    }
 
     if(!user){
         return (
@@ -31,6 +40,20 @@ export default function AccountPage() {
         console.error("Error logging out:", err);
         }
     }
+
+    useEffect(() => {
+        const db = getDatabase();
+        const favRef = databaseRef(db, `userFavorites/${user.uid}`);
+
+        onValue(favRef, (snapshot) => {
+            const data = snapshot.val() || {};
+            const homesArray = Object.entries(data).map(([id, value])=> ({
+                id,
+                ...value,
+            }));
+            setSavedHomes(homesArray);
+        });
+    }, [user.uid]);
 
     return (
         <main id="main" className="account-container">
@@ -150,40 +173,32 @@ export default function AccountPage() {
         {/* Saved homes */}
         <section className="card" aria-labelledby="saved-heading">
             <h2 id="saved-heading">Saved homes</h2>
-            <ul className="saved-list" role="list">
-            <li className="saved-item">
-                <a className="saved-thumb" href="#">
-                <img
-                    src="/images/house1.jpg"
-                    alt="2699 Green Valley, Highland Lake, FL"
-                />
-                </a>
-                <div className="saved-meta">
-                <a className="saved-title" href="#">
-                    2699 Green Valley, Highland Lake, FL
-                </a>
-                <p className="saved-sub">$729,000 · 3 beds · 2 baths</p>
-                </div>
-                <button className="button button-tertiary" type="button">
-                Remove
-                </button>
-            </li>
 
-            <li className="saved-item">
-                <a className="saved-thumb" href="#">
-                <img src="/images/house2.jpeg" alt="2102 Maple St, Seattle, WA" />
-                </a>
-                <div className="saved-meta">
-                <a className="saved-title" href="#">
-                    2102 Maple St, Seattle, WA
-                </a>
-                <p className="saved-sub">$815,000 · 4 beds · 2.5 baths</p>
-                </div>
-                <button className="button button-tertiary" type="button">
-                Remove
-                </button>
-            </li>
-            </ul>
+            {savedHomes.length === 0 ? (
+                <p>You don't have any saved homes yet.</p>
+            ) : (
+                <ul className="saved-list" role="list">
+                    {savedHomes.map((home) => (
+                        <li className="saved-item" key={home.id}>
+                            <a className="saved-thumb" href="#">
+                            <img
+                                src={home.img?.[0]}
+                                alt={home.address}
+                            />
+                            </a>
+                            <div className="saved-meta">
+                            <a className="saved-title" href="#">
+                                {home.address}
+                            </a>
+                            <p className="saved-sub">${home.price?.toLocaleString()} · {home.beds} beds · {home.baths} baths</p>
+                            </div>
+                            <button className="button button-tertiary" type="button" onClick={() => handleRemoveSaved(home.id)}>
+                            Remove
+                            </button>
+                        </li>                        
+                    ))}
+                </ul>
+            )}
         </section>
         </main>
     );
