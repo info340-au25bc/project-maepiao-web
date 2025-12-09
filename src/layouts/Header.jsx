@@ -37,12 +37,16 @@ export default function Header() {
 					{user ? (
 						<>
 							<span className="user-name">{user.displayName || user.email}</span>
-							<button className="login" onClick={handleSignOut}>Sign Out</button>
+							<NavLink to="/account">
+                				<button className="account">Account</button>
+            				</NavLink>
+							<button onClick={logout} className="account">Sign Out</button>
 						</>
 					) : (
-						<NavLink to="/login">
-							<button className="login">Login</button>
-						</NavLink>
+						<>
+							<NavLink to="/login"><button className="login">Log in</button></NavLink>
+            				<NavLink to="/signup"><button className="signup">Sign up</button></NavLink>
+						</>
 					)}
 				</div>
 			</nav>
