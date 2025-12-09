@@ -13,7 +13,7 @@ export default function AccountPage() {
         try {
             const db = getDatabase();
             const favRef = databaseRef(db, `userFavorites/${user.uid}/${id}`);
-            remove(favRef);            
+            await remove(favRef);            
         } catch (error) {
             console.error("Error removing saved home:", error);
         }
@@ -39,10 +39,10 @@ export default function AccountPage() {
 
     async function handleLogout() {
         try {
-        await logout();
-        navigate("/");
+            await logout();
+            navigate("/");
         } catch (err) {
-        console.error("Error logging out:", err);
+            console.error("Error logging out:", err);
         }
     }
 
@@ -74,7 +74,7 @@ export default function AccountPage() {
                 <a className="button" href="#edit-profile">
                 Edit Profile
                 </a>
-                <button className="button button-secondary" type="button">
+                <button className="button button-secondary" type="button" onClick={() => handleLogout()}>
                 Log Out
                 </button>
             </div>
