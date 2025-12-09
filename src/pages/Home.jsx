@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getDatabase, ref as databaseRef, onValue } from "firebase/database";
+import { getDatabase, ref as databaseRef, onValue, set, remove } from "firebase/database";
+import { useUser } from "../contexts/UserContext";
 
 export default function Home() {
     const [houses, setHouses] = useState([]);
@@ -10,6 +11,9 @@ export default function Home() {
     const [interestRate, setInterestRate] = useState('');
     const [loanTerm, setLoanTerm] = useState(15);
     const [monthlyPayment, setMonthlyPayment] = useState(null);
+
+    const { user } = useUser();
+    const [favorites, setFavorites] = useState({});
 
     const calculatePayment = (e) => {
         e.preventDefault();
@@ -24,15 +28,54 @@ export default function Home() {
         setMonthlyPayment(payment);
     }
 
+    const toggleFavorite = (house) => {
+        if (!user) {
+            alert("Please log in to favorite properties.");
+            return;
+        }
+
+        const db = getDatabase();
+        const favRef = databaseRef(db, `userFavorites/${user.uid}/${house.id}`);
+
+        if (favorites && favorites[house.id]) {
+            remove(favRef);
+        } else {
+            set(favRef, house);
+        }
+    }
+
     useEffect(() => {
         const db = getDatabase();
         const housesRef = databaseRef(db, 'houses/');
         onValue(housesRef, (snapshot) => {
             const data = snapshot.val();
-            const housesArray = Object.keys(data).map((key) => data[key])
+            if (!data) {
+                setHouses([]);
+                return;
+            }
+            const housesArray = Object.entries(data).map(([id, value]) => ({
+                id,
+                ...value,
+            }))
             setHouses(housesArray);
         })
     }, []);
+
+    useEffect(() => {
+        if (!user) {
+            setFavorites({});
+            return;
+        }
+
+        const db = getDatabase()
+        const favRef = databaseRef(db, `userFavorites/${user.uid}`);
+
+        onValue(favRef, (snapshot) => {
+            const data = snapshot.val() || {};
+            setFavorites(data);
+        });
+    }, [user]);
+
 
     useEffect(() => {
         if (selectedHouse) {
@@ -57,7 +100,7 @@ export default function Home() {
             <p>Top Picks Near You</p>
             <div className="grid-container">
                 {houses.map((house) => {
-                    return <HouseCard houseObj={house} key={house.address} setSelectedHouse={setSelectedHouse} />
+                    return <HouseCard houseObj={house} key={house.address} setSelectedHouse={setSelectedHouse} isFavorite={!!favorites[house.id]} onToggleFavorite={() => toggleFavorite(house)} />
                 })}
             </div>
             {selectedHouse && (
@@ -108,10 +151,21 @@ function HouseCard(props) {
             <img src={house.img?.[0]} alt={house.address} />
             <div className="price-row">
                 <p className="house-price">${house.price.toLocaleString()}</p>
-                <span className="material-symbols-outlined favorite">favorite</span>
+                <span className={`material-symbols-outlined favorite ${props.isFavorite ? "favorite--active" : ""}`} 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    props.onToggleFavorite();
+                }}>favorite</span>
             </div>
             <p className="house-address">{house.address}</p>
-            <p className="house-details"><span className="material-symbols-outlined bed">bed</span>{house.beds} beds <span className="material-symbols-outlined bathtub">bathtub</span>{house.baths} Bathrooms <span className="material-symbols-outlined square-foot">square_foot</span>{house.sqft}</p>
+            <p className="house-details">
+                <span className="material-symbols-outlined bed">bed</span>
+                {house.beds} beds
+                <span className="material-symbols-outlined bathtub">bathtub</span>
+                {house.baths} Bathrooms
+                <span className="material-symbols-outlined square-foot">square_foot</span>
+                {house.sqft}
+            </p>
         </div>
     );
 }
