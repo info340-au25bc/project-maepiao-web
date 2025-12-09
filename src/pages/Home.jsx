@@ -28,19 +28,23 @@ export default function Home() {
         setMonthlyPayment(payment);
     }
 
-    const toggleFavorite = (house) => {
+    const toggleFavorite = async (house) => {
         if (!user) {
             alert("Please log in to favorite properties.");
             return;
         }
 
-        const db = getDatabase();
-        const favRef = databaseRef(db, `userFavorites/${user.uid}/${house.id}`);
+        try {
+            const db = getDatabase();
+            const favRef = databaseRef(db, `userFavorites/${user.uid}/${house.id}`);
 
-        if (favorites && favorites[house.id]) {
-            remove(favRef);
-        } else {
-            set(favRef, house);
+            if (favorites && favorites[house.id]) {
+                await remove(favRef);
+            } else {
+                await set(favRef, house);
+            }            
+        } catch (error) {
+            console.error("Error updating favorites:", error);
         }
     }
 

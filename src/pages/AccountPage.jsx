@@ -9,10 +9,15 @@ export default function AccountPage() {
 
     const [savedHomes, setSavedHomes] = useState([]);
 
-    const handleRemoveSaved = (id) => {
-        const db = getDatabase();
-        const favRef = databaseRef(db, `userFavorites/${user.uid}/${id}`);
-        remove(favRef);
+    const handleRemoveSaved = async (id) => {
+        try {
+            const db = getDatabase();
+            const favRef = databaseRef(db, `userFavorites/${user.uid}/${id}`);
+            remove(favRef);            
+        } catch (error) {
+            console.error("Error removing saved home:", error);
+        }
+
     }
 
     if(!user){
