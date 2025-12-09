@@ -1,9 +1,10 @@
-
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 
 export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const { user, logout } = useUser();
 	const active = ({ isActive }) => (isActive ? "active" : undefined);
 
 	function toggleMenu() {
@@ -13,6 +14,12 @@ export default function Header() {
 	function closeMenu() {
 		setIsMenuOpen(false);
 	}
+
+	async function handleSignOut() {
+		await logout();
+		closeMenu();
+	}
+
 	return (
 		<header>
 			<nav aria-label="Primary site navigation" className={isMenuOpen ? "nav-open" : ""}>
@@ -27,9 +34,16 @@ export default function Header() {
 				</div>
 
 				<div className="auth-links">
-					<NavLink to="/login">
-						<button className="login">Login</button>
-					</NavLink>
+					{user ? (
+						<>
+							<span className="user-name">{user.displayName || user.email}</span>
+							<button className="login" onClick={handleSignOut}>Sign Out</button>
+						</>
+					) : (
+						<NavLink to="/login">
+							<button className="login">Login</button>
+						</NavLink>
+					)}
 				</div>
 			</nav>
 		</header>

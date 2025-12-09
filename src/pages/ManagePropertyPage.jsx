@@ -1,20 +1,62 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { getDatabase, ref as databaseRef, onValue, remove } from "firebase/database";
+import { useUser } from "../contexts/UserContext";
 import "../styles/editpage.css";
 
 export default function ManagePropertyPage() {
-    const [house, setHouse] = useState(null);
+    const [houses, setHouses] = useState([]);
+    const { user } = useUser();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/temp-house-objects/sell-house-object.json")
-            .then((res) => res.json())
-            .then((data) => setHouse(data))
-            .catch((err) => console.error("Error loading house:", err));
-    }, []);
+        if (!user) return;
 
-    if (!house) return (
-        <div className="manage-property-page">Loading…</div>
-    );
+        const db = getDatabase();
+        const housesRef = databaseRef(db, 'houses/');
+        
+        const unsubscribe = onValue(housesRef, (snapshot) => {
+            const data = snapshot.val();
+            if (!data) {
+                setHouses([]);
+                return;
+            }
+            
+            // Filter houses by userId matching current user
+            const housesArray = Object.keys(data)
+                .map((key) => ({ ...data[key], id: key }))
+                .filter((house) => house.userId === user.uid);
+            
+            setHouses(housesArray);
+        });
+
+        return () => unsubscribe();
+    }, [user]);
+
+    function handleHouseClick(house) {
+        navigate(`/edit/${house.id}`);
+    }
+
+    async function handleDelete(houseId, e) {
+        e.stopPropagation(); // Prevent triggering the card click
+        
+        if (!window.confirm('Are you sure you want to delete this property? This action cannot be undone.')) {
+            return;
+        }
+
+        try {
+            const db = getDatabase();
+            const houseRef = databaseRef(db, `houses/${houseId}`);
+            await remove(houseRef);
+        } catch (err) {
+            console.error("Error deleting property:", err);
+            alert("Failed to delete property. Please try again.");
+        }
+    }
+
+    if (!user) {
+        return <div className="manage-property-page">Loading…</div>;
+    }
 
     return (
         <div className="manage-property-page">
@@ -29,18 +71,34 @@ export default function ManagePropertyPage() {
                 <h2 className="property2">Current listing</h2>
 
                 <div className="listing-selection">
-                    <div className="property-card">
-                        <img src={house.imgs && house.imgs[0] && house.imgs[0].path} alt={house.address} />
-                        <div className="price-row2">
-                            <p className="house-price">${house.price.toLocaleString()}</p>
-                        </div>
-                        <p className="house-address">{house.address}</p>
-                        <Link to="/edit">
-                            <button className="edit-property-button">
-                                Edit Your Property
-                            </button>
-                        </Link>
-                    </div>
+                    {houses.length === 0 ? (
+                        <p>No properties found. Create a new listing on the Sell page.</p>
+                    ) : (
+                        houses.map((house) => (
+                            <div key={house.id} className="property-card" style={{marginBottom: '20px'}}>
+                                <img 
+                                    src={house.img && house.img[0] ? house.img[0] : '/images/placeholder.jpg'} 
+                                    alt={house.address} 
+                                />
+                                <div className="price-row2">
+                                    <p className="house-price">${house.price?.toLocaleString() || '0'}</p>
+                                </div>
+                                <p className="house-address">{house.address}</p>
+                                <button 
+                                    className="edit-property-button"
+                                    onClick={() => handleHouseClick(house)}
+                                >
+                                    Edit Your Property
+                                </button>
+                                <button 
+                                    className="edit-property-button"
+                                    onClick={(e) => handleDelete(house.id, e)}
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        ))
+                    )}
                 </div>
             </section>
         </div>
