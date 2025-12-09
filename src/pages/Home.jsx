@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { getDatabase, ref as databaseRef, onValue } from "firebase/database";
 import ClipLoader from "react-spinners/ClipLoader";
+=======
+import { getDatabase, ref as databaseRef, onValue, set, remove } from "firebase/database";
+import { useUser } from "../contexts/UserContext";
+>>>>>>> cd03cde1fe4522c23a49bfa5301a074b18cfaedd
 
 export default function Home() {
     const [houses, setHouses] = useState([]);
@@ -11,6 +16,9 @@ export default function Home() {
     const [monthlyPayment, setMonthlyPayment] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+
+    const { user } = useUser();
+    const [favorites, setFavorites] = useState({});
 
     const calculatePayment = (e) => {
         e.preventDefault();
@@ -28,27 +36,59 @@ export default function Home() {
         setMonthlyPayment(payment);
     };
 
+    const toggleFavorite = (house) => {
+        if (!user) {
+            alert("Please log in to favorite properties.");
+            return;
+        }
+
+        const db = getDatabase();
+        const favRef = databaseRef(db, `userFavorites/${user.uid}/${house.id}`);
+
+        if (favorites && favorites[house.id]) {
+            remove(favRef);
+        } else {
+            set(favRef, house);
+        }
+    }
+
     useEffect(() => {
         const db = getDatabase();
         const housesRef = databaseRef(db, 'houses/');
-        
+
         const unsubscribe = onValue(housesRef, (snapshot) => {
             const data = snapshot.val();
-            if(!data){
+            if (!data) {
                 setHouses([]);
-            } else {
-                const housesArray = Object.keys(data).map((key) => data[key]);
-                setHouses(housesArray);
+                return;
             }
-            setLoading(false);
-        }, 
-        (err) => {
-            console.error("Error loading houses:", err);
-            setError("Failed to load listings. Please try again later.");
-            setLoading(false);
+            const housesArray = Object.entries(data).map(([id, value]) => ({
+                id,
+                ...value,
+            }))
+            setHouses(housesArray);
+        })
+
+        return unsubscribe;
+    }, []);
+
+    useEffect(() => {
+        if (!user) {
+            setFavorites({});
+            return;
+        }
+
+        const db = getDatabase()
+        const favRef = databaseRef(db, `userFavorites/${user.uid}`);
+
+        const unsubscribe = onValue(favRef, (snapshot) => {
+            const data = snapshot.val() || {};
+            setFavorites(data);
         });
-        return () => unsubscribe();
-    },[]);
+
+        return unsubscribe;
+    }, [user]);
+
 
     useEffect(() => {
         if (selectedHouse) {
@@ -71,6 +111,7 @@ export default function Home() {
         <div className="properties-section">
             <h1>Browse Properties</h1>
             <p>Top Picks Near You</p>
+<<<<<<< HEAD
             {loading ? (
                 <div className="loading-state" aria-live="polite">
                     <ClipLoader />
@@ -88,6 +129,13 @@ export default function Home() {
                 </div>
             )}
             
+=======
+            <div className="grid-container">
+                {houses.map((house) => {
+                    return <HouseCard houseObj={house} key={house.address} setSelectedHouse={setSelectedHouse} isFavorite={!!favorites[house.id]} onToggleFavorite={() => toggleFavorite(house)} />
+                })}
+            </div>
+>>>>>>> cd03cde1fe4522c23a49bfa5301a074b18cfaedd
             {selectedHouse && (
                 <div className="overlay" onClick={() => setSelectedHouse(null)}>
                     <div className="property-view-property-card" onClick={(e) => e.stopPropagation()}>
@@ -136,10 +184,21 @@ function HouseCard(props) {
             <img src={house.img?.[0]} alt={house.address} />
             <div className="price-row">
                 <p className="house-price">${house.price.toLocaleString()}</p>
-                <span className="material-symbols-outlined favorite">favorite</span>
+                <span className={`material-symbols-outlined favorite ${props.isFavorite ? "favorite--active" : ""}`} 
+                onClick={(e) => {
+                    e.stopPropagation();
+                    props.onToggleFavorite();
+                }}>favorite</span>
             </div>
             <p className="house-address">{house.address}</p>
-            <p className="house-details"><span className="material-symbols-outlined bed">bed</span>{house.beds} beds <span className="material-symbols-outlined bathtub">bathtub</span>{house.baths} Bathrooms <span className="material-symbols-outlined square-foot">square_foot</span>{house.sqft}</p>
+            <p className="house-details">
+                <span className="material-symbols-outlined bed">bed</span>
+                {house.beds} beds
+                <span className="material-symbols-outlined bathtub">bathtub</span>
+                {house.baths} Bathrooms
+                <span className="material-symbols-outlined square-foot">square_foot</span>
+                {house.sqft}
+            </p>
         </div>
     );
 }
