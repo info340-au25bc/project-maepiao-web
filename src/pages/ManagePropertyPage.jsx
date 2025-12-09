@@ -3,15 +3,19 @@ import { useNavigate } from "react-router-dom";
 import { getDatabase, ref as databaseRef, onValue, remove } from "firebase/database";
 import { useUser } from "../contexts/UserContext";
 import "../styles/editpage.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function ManagePropertyPage() {
     const [houses, setHouses] = useState([]);
     const { user } = useUser();
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
         if (!user) return;
 
+        setLoading(true);
+        
         const db = getDatabase();
         const housesRef = databaseRef(db, 'houses/');
         
@@ -19,6 +23,7 @@ export default function ManagePropertyPage() {
             const data = snapshot.val();
             if (!data) {
                 setHouses([]);
+                setLoading(false);
                 return;
             }
             
@@ -28,7 +33,13 @@ export default function ManagePropertyPage() {
                 .filter((house) => house.userId === user.uid);
             
             setHouses(housesArray);
-        });
+            setLoading(false);
+        },
+        (err) => {
+            console.error("Error loading houses:", err);
+            setLoading(false);
+        }
+    );
 
         return () => unsubscribe();
     }, [user]);
@@ -70,36 +81,43 @@ export default function ManagePropertyPage() {
             <section className="body-manage">
                 <h2 className="property2">Current listing</h2>
 
-                <div className="listing-selection">
-                    {houses.length === 0 ? (
-                        <p>No properties found. Create a new listing on the Sell page.</p>
+                {loading ? (
+                    <div className="loading-state" aria-live="polite">
+                        <ClipLoader />
+                        <p>Loading your listings…</p>
+                    </div>
                     ) : (
-                        houses.map((house) => (
-                            <div key={house.id} className="property-card" style={{marginBottom: '20px'}}>
-                                <img 
-                                    src={house.img && house.img[0] ? house.img[0] : '/images/placeholder.jpg'} 
-                                    alt={house.address} 
-                                />
-                                <div className="price-row2">
-                                    <p className="house-price">${house.price?.toLocaleString() || '0'}</p>
+                    <div className="listing-selection">
+                        {houses.length === 0 ? (
+                            <p>No properties found. Create a new listing on the Sell page.</p>
+                        ) : (
+                            houses.map((house) => (
+                                <div key={house.id} className="property-card" style={{marginBottom: '20px'}}>
+                                    <img
+                                        src={house.img && house.img[0] ? house.img[0] : '/images/placeholder.jpg'}
+                                        alt={house.address}
+                                    />
+                                    <div className="price-row2">
+                                        <p className="house-price">${house.price?.toLocaleString() || '0'}</p>
+                                    </div>
+                                    <p className="house-address">{house.address}</p>
+                                    <button
+                                        className="edit-property-button"
+                                        onClick={() => handleHouseClick(house)}
+                                    >
+                                        Edit Your Property
+                                    </button>
+                                    <button
+                                        className="edit-property-button"
+                                        onClick={(e) => handleDelete(house.id, e)}
+                                    >
+                                        Delete
+                                    </button>
                                 </div>
-                                <p className="house-address">{house.address}</p>
-                                <button 
-                                    className="edit-property-button"
-                                    onClick={() => handleHouseClick(house)}
-                                >
-                                    Edit Your Property
-                                </button>
-                                <button 
-                                    className="edit-property-button"
-                                    onClick={(e) => handleDelete(house.id, e)}
-                                >
-                                    Delete
-                                </button>
-                            </div>
-                        ))
-                    )}
-                </div>
+                            ))
+                        )}
+                    </div>
+                )}
             </section>
         </div>
     );

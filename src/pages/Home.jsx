@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref as databaseRef, onValue } from "firebase/database";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Home() {
     const [houses, setHouses] = useState([]);
-
     const [selectedHouse, setSelectedHouse] = useState(null);
-
     const [downPayment, setDownPayment] = useState('');
     const [interestRate, setInterestRate] = useState('');
     const [loanTerm, setLoanTerm] = useState(15);
     const [monthlyPayment, setMonthlyPayment] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     const calculatePayment = (e) => {
         e.preventDefault();
@@ -19,24 +20,35 @@ export default function Home() {
         const monthlyRate = Number(interestRate) / 100 / 12;
         const numberOfPayments = loanTerm * 12;
 
+        if (!principal || !monthlyRate || !numberOfPayments) {
+            return;
+        }
         const payment = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
 
         setMonthlyPayment(payment);
-    }
+    };
 
     useEffect(() => {
-        // fetch('/temp-house-objects/temp-house-objects.json')
-        //     .then((res) => res.json())
-        //     .then((data) => setHouses(data))
-        //     .catch((err) => console.error("Error loading houses: ", err))
         const db = getDatabase();
         const housesRef = databaseRef(db, 'houses/');
-        onValue(housesRef, (snapshot) => {
+        
+        const unsubscribe = onValue(housesRef, (snapshot) => {
             const data = snapshot.val();
-            const housesArray = Object.keys(data).map((key) => data[key])
-            setHouses(housesArray);
-        })
-    }, []);
+            if(!data){
+                setHouses([]);
+            } else {
+                const housesArray = Object.keys(data).map((key) => data[key]);
+                setHouses(housesArray);
+            }
+            setLoading(false);
+        }, 
+        (err) => {
+            console.error("Error loading houses:", err);
+            setError("Failed to load listings. Please try again later.");
+            setLoading(false);
+        });
+        return () => unsubscribe();
+    },[]);
 
     useEffect(() => {
         if (selectedHouse) {
@@ -59,11 +71,23 @@ export default function Home() {
         <div className="properties-section">
             <h1>Browse Properties</h1>
             <p>Top Picks Near You</p>
-            <div className="grid-container">
-                {houses.map((house) => {
-                    return <HouseCard houseObj={house} key={house.address} setSelectedHouse={setSelectedHouse} />
-                })}
-            </div>
+            {loading ? (
+                <div className="loading-state" aria-live="polite">
+                    <ClipLoader />
+                    <p>Loading listings…</p>
+                </div>
+            ): error ? (<p className="error-text" role="alert"> {error}</p>):(
+                <div className="grid-container">
+                    {houses.map((house) => (
+                        <HouseCard
+                        key={house.address}
+                        houseObj={house}
+                        setSelectedHouse={setSelectedHouse}
+                        />
+                    ))}
+                </div>
+            )}
+            
             {selectedHouse && (
                 <div className="overlay" onClick={() => setSelectedHouse(null)}>
                     <div className="property-view-property-card" onClick={(e) => e.stopPropagation()}>
