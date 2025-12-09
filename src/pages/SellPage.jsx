@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { getDatabase, ref as databaseRef, push } from "firebase/database";
+import { useState, useRef } from "react";
 import { useUser } from "../contexts/UserContext";
 import "../styles/editpage.css";
 import ClipLoader from "react-spinners/ClipLoader";
