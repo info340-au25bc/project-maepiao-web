@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getDatabase, ref as databaseRef, get, update } from "firebase/database";
 import { useUser } from "../contexts/UserContext";
 import "../styles/editpage.css";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function EditProperty() {
     const { houseId } = useParams();
@@ -153,7 +154,14 @@ export default function EditProperty() {
     }
 
     if (loading || !house) {
-        return <div className="edit-property-page">Loading…</div>;
+        return (
+            <div className="edit-property-page">
+            <div className="loading-state" aria-live="polite">
+                <ClipLoader />
+                <p>Loading your listing…</p>
+            </div>
+            </div>
+        );
     }
 
     return (

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { getDatabase, ref as databaseRef, push } from "firebase/database";
 import { useUser } from "../contexts/UserContext";
 import "../styles/editpage.css";
+import React, { useState, useRef } from "react";
+
 
 export default function SellPage() {
     const { user, loading } = useUser();
@@ -21,7 +23,14 @@ export default function SellPage() {
     const fileInputRef = useRef(null);
 
     if (loading) {
-        return <div className="edit-property-page">Loading...</div>;
+        return(
+            <div className="edit-property-page">
+            <div className="loading-state" aria-live="polite">
+                <ClipLoader />
+                <p>Loading your account…</p>
+            </div>
+            </div>
+        );
     }
 
     function updateField(field, value) {
