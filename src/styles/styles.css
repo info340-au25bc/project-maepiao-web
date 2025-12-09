@@ -859,6 +859,15 @@ input {
   }
 }
 
+/* styling for the loading spinner */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
 footer {
   text-align: center;
   padding: 1rem;
