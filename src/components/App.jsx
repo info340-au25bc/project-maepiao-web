@@ -30,7 +30,7 @@ export default function App() {
                                 <ManagePropertyPage />
                             </ProtectedRoute>
                         } />
-                        <Route path="/account" element={<AccountPage />} />
+                        <Route path="/account" element={<ProtectedRoute><AccountPage /></ProtectedRoute>} />
                         <Route path="/edit/:houseId" element={
                             <ProtectedRoute>
                                 <EditProperty />

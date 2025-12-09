@@ -1,14 +1,45 @@
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 
 export default function AccountPage() {
+    const { user, logout } = useUser();
+    const navigate = useNavigate();
+
+    if(!user){
+        return (
+            <main className="account-container">
+                <section className="card">
+                <h1>Account</h1>
+                <p>You need to be logged in to view this page.</p>
+                <Link className="button" to="/login">
+                    Go to Login
+                </Link>
+                </section>
+            </main>
+        );
+    }
+
+    const displayName = user.displayName || user.email || "HomeVest user";
+    const email = user.email || "";
+
+    async function handleLogout() {
+        try {
+        await logout();
+        navigate("/");
+        } catch (err) {
+        console.error("Error logging out:", err);
+        }
+    }
+
     return (
         <main id="main" className="account-container">
         {/* Profile section */}
         <section className="card profile-card">
             <div className="profile-meta">
             <h1 id="profile-heading">Profile</h1>
-            <p className="profile-name">Josh Hong</p>
-            <p className="profile-email">jh26@example.com</p>
+            <p className="profile-name">{displayName}</p>
+            <p className="profile-email">{email}</p>
             <div className="button-row">
                 <a className="button" href="#edit-profile">
                 Edit Profile
